@@ -17,6 +17,7 @@ const allowedOrigins = [
   "https://gyansagar-client.vercel.app",
   'https://e-learn-blush.vercel.app',
   "https://gyansagar.bearerop.tech",
+  "https://codeit-iota.vercel.app/"
 ];
 
 const corsOptions = {
