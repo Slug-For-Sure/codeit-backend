@@ -17,7 +17,7 @@ const allowedOrigins = [
   "https://gyansagar-client.vercel.app",
   'https://e-learn-blush.vercel.app',
   "https://gyansagar.bearerop.tech",
-  "https://codeit-iota.vercel.app/"
+  "https://codeit-iota.vercel.app"
 ];
 
 const corsOptions = {
@@ -41,7 +41,7 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions))
 
 app.get('/', (req, res) => {
-  res.send('Gyan-Sagar Backend is up. 😊');
+  res.send('Codeit Backend is up. 😊');
 });
 
 app.use('/api/v1/user', require('./src/routes/userRoutes'));
