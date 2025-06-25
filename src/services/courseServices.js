@@ -490,6 +490,46 @@ const addTrack = async (instructor, courseId, trackData) => {
     };
   }
 };
+const removeTrack = async (instructor, courseId, trackId) => {
+  try {
+    const course = await Course.findOne({
+      _id: courseId,
+      createdBy: instructor._id,
+    });
+    if (!course) {
+      return {
+        status: 404,
+        message: "Course not found",
+        success: false,
+      };
+    }
+    // Check if the track exists in the course
+    const trackIndex = course.tracks.indexOf(trackId);
+    if (trackIndex === -1) {
+      return {
+        status: 404,
+        message: "Track not found in the course",
+        success: false,
+      };
+    } else {
+      // Remove the track from the course
+      course.tracks.splice(trackIndex, 1);
+      await course.save();
+      // Delete the track from the Track collection
+      await Track.deleteOne({ _id: trackId });
+      return {
+        status: 200,
+        message: "Track removed successfully from the course",
+        success: true,
+      };
+    }
+  } catch (error) {
+    return {      status: 500,
+      message: error.message,
+      success: false,
+    };
+  }
+};
 
 const getCourseContent = async (courseId) => {
   try {
@@ -567,6 +607,7 @@ module.exports = {
   draftedCourses,
   courseByCategory,
   addTrack,
+  removeTrack,
   getCourseContent,
   getTrackContent,
 };

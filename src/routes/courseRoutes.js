@@ -16,7 +16,8 @@ const {
   getCourseByCategory,
   addTrack,
   getCourseContent,
-  getTrackContent
+  getTrackContent,
+  removeTrack
 } = require("../controllers/courseController");
 
 router.post("/add", userAuth, addCourse); // Add course
@@ -30,7 +31,8 @@ router.get("/drafted", userAuth, draftedCourses);
 router.get("/purchased", userAuth, getMyPurchasedCourses);
 router.post("/purchase", userAuth, purchaseCourse); // Purchase course by id (added id param)
 router.get("/category", getCourseByCategory); // Get course by id (added id param)
-router.post("/add/track", userAuth, addTrack); // Add track to course (added id param)
+router.post("/content/track/add", userAuth, addTrack); // Add track to course content
+router.delete("/content/track/remove", userAuth, removeTrack); // Delete track from course content
 router.get("/content",userAuth, getCourseContent);
 router.get("/content/track",userAuth, getTrackContent);
 

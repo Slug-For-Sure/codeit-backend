@@ -12,7 +12,8 @@ const {
   courseByCategory,
   addTrack,
   getCourseContent,
-  getTrackContent
+  getTrackContent,
+  removeTrack
 } = require("../services/courseServices");
 
 exports.addCourse = async (req, res) => {
@@ -115,10 +116,19 @@ exports.getCourseByCategory = async (req, res) => {
 };
 exports.addTrack = async (req, res) => {
   try {
-    const data = await addTrack(req.user,req.body.courseId,req.body.trackData);
+    const data = await addTrack(req.user,req.body.courseId,req.body.content);
     res.status(data.success ? 200 : 404).json(data);
   } catch (error) {
     res.status(500).json({ message: "Failed to add track in the course" });
+  }
+};
+
+exports.removeTrack = async (req, res) => {
+  try {
+    const data = await removeTrack(req.user,req.body.courseId,req.body.trackId);
+    res.status(data.success ? 200 : 404).json(data);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to remove track from the course" });
   }
 };
 
