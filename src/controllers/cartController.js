@@ -5,6 +5,8 @@ exports.addItemController = async (req, res) => {
     const data = await addItem(req.user, req.body);
     res.status(data.success ? 201 : 400).json(data);
   } catch (error) {
+    console.log(error);
+    
     res.status(500).json({ message: "Failed to add course" });
   }
 };
