@@ -14,7 +14,9 @@ app.use(bodyParser.json());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://codeit-iota.vercel.app"
+  "https://codeit-iota.vercel.app",
+  "https://ourcodeit.com",
+  
 ];
 
 const corsOptions = {
