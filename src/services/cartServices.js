@@ -46,6 +46,8 @@ const removeItem = async (user, body) => {
   try {
     const { courseId } = body;
     const cartDoc = await Cart.findOne({ userId: user._id });
+    console.log("Cart Document:", cartDoc);
+    
 
     if (!cartDoc) {
       return { success: false, message: "Cart not found", status: 404 };
