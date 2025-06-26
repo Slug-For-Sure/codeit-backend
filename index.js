@@ -16,7 +16,8 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://codeit-iota.vercel.app",
   "https://ourcodeit.com",
-  
+  "https://www.ourcodeit.com"
+
 ];
 
 const corsOptions = {
